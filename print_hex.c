@@ -6,7 +6,7 @@
 /*   By: mzary <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 00:26:34 by mzary             #+#    #+#             */
-/*   Updated: 2024/11/06 06:07:58 by mzary            ###   ########.fr       */
+/*   Updated: 2024/11/07 23:15:53 by mzary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	print_hex(size_t holder, char size)
 	s_table = "0123456789abcdef";
 	b_table = "0123456789ABCDEF";
 	number = (unsigned int)holder;
-	divide = 268435456;
+	divide = 0xffffffff;
 	count = 0;
 	while (divide / 16 && number / divide == 0)
 		divide = divide / 16;
