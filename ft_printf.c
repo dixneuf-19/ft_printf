@@ -6,7 +6,7 @@
 /*   By: mzary <mzary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 00:11:47 by mzary             #+#    #+#             */
-/*   Updated: 2024/11/06 00:40:06 by mzary            ###   ########.fr       */
+/*   Updated: 2024/11/08 23:50:01 by mzary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_printf(const char *format, ...)
 			total++;
 		else
 		{
-			written = print_arg(*((char *)format + 1), va_arg(argpass, size_t));
+			written = print_arg(*((char *)format + 1), argpass);
 			if (written == -1)
 				return (-1);
 			total += written;

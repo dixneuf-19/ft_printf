@@ -16,25 +16,23 @@ int	print_hex(size_t holder, char size)
 {
 	char			*s_table;
 	char			*b_table;
-	unsigned int	number;
-	unsigned int	divide;
+	size_t			divide;
 	int				count;
 
 	s_table = "0123456789abcdef";
 	b_table = "0123456789ABCDEF";
-	number = (unsigned int)holder;
-	divide = 0xffffffff;
+	divide = 0x1000000000000000;
 	count = 0;
-	while (divide / 16 && number / divide == 0)
+	while (divide / 16 && holder / divide == 0)
 		divide = divide / 16;
 	while (divide)
 	{
-		if (size == 'x' && write(1, s_table + (number / divide), 1) == -1)
+		if (size == 'x' && write(1, s_table + (holder / divide), 1) == -1)
 			return (-1);
-		else if (size == 'X' && write(1, b_table + (number / divide), 1) == -1)
+		else if (size == 'X' && write(1, b_table + (holder / divide), 1) == -1)
 			return (-1);
 		count++;
-		number = number % divide;
+		holder = holder % divide;
 		divide = divide / 16;
 	}
 	return (count);

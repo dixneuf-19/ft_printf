@@ -15,22 +15,11 @@
 int	print_pointer(size_t holder)
 {
 	int				count;
-	int				total;
 
 	if (write(1, "0x", 2) == -1)
 		return (-1);
-	count = 0;
-	total = 2;
-	if ((unsigned int)holder < holder)
-	{
-		count =  print_hex(holder >> 32, 'x');
-		if (count == -1)
-			return (-1);
-	}
-	total += count;
 	count = print_hex(holder, 'x');
 	if (count == -1)
 		return (-1);
-	total += count;
-	return (total);
+	return (count + 2);
 }
