@@ -22,10 +22,8 @@ int	print_unsigned(size_t holder)
 	count = 0;
 	divide = 1000000000;
 	number = (unsigned int)holder;
-	while (number / divide == 0)
-	{
+	while (divide / 10 && number / divide == 0)
 		divide = divide / 10;
-	}
 	while (divide)
 	{
 		convert = (number / divide) + 48;
