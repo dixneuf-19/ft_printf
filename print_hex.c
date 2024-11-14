@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mzary <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mzary <mzary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 00:26:34 by mzary             #+#    #+#             */
-/*   Updated: 2024/11/07 23:15:53 by mzary            ###   ########.fr       */
+/*   Updated: 2024/11/14 21:42:09 by mzary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_hex(size_t holder, char size)
+int	print_hex(size_t hex, char size)
 {
-	char			*s_table;
-	char			*b_table;
-	size_t			divide;
+	char			*s_tab;
+	char			*b_tab;
+	size_t			div;
 	int				count;
 
-	s_table = "0123456789abcdef";
-	b_table = "0123456789ABCDEF";
-	divide = 0x1000000000000000;
+	s_tab = "0123456789abcdef";
+	b_tab = "0123456789ABCDEF";
+	div = 0x1000000000000000;
 	count = 0;
-	while (divide / 16 && holder / divide == 0)
-		divide = divide / 16;
-	while (divide)
+	while (div / 16 && hex / div == 0)
+		div = div / 16;
+	while (div)
 	{
-		if (size == 'x' && write(1, s_table + (holder / divide), 1) == -1)
+		if (size == 'x' && write(1, s_tab + (hex / div), 1) == -1)
 			return (-1);
-		else if (size == 'X' && write(1, b_table + (holder / divide), 1) == -1)
+		else if (size == 'X' && write(1, b_tab + (hex / div), 1) == -1)
 			return (-1);
 		count++;
-		holder = holder % divide;
-		divide = divide / 16;
+		hex = hex % div;
+		div = div / 16;
 	}
 	return (count);
 }

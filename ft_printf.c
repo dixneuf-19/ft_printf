@@ -6,7 +6,7 @@
 /*   By: mzary <mzary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 00:11:47 by mzary             #+#    #+#             */
-/*   Updated: 2024/11/08 23:50:01 by mzary            ###   ########.fr       */
+/*   Updated: 2024/11/14 22:48:34 by mzary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	ft_printf(const char *format, ...)
 	va_list	argpass;
 	int		written;
 
-	if (check_format(format) == 0)
-		return (-1);
 	total = 0;
 	va_start(argpass, format);
 	while (*format)
@@ -30,11 +28,10 @@ int	ft_printf(const char *format, ...)
 			total++;
 		else
 		{
-			written = print_arg(*((char *)format + 1), argpass);
+			written = print_arg(*(format + 1), argpass, &format);
 			if (written == -1)
 				return (-1);
 			total += written;
-			format += 2;
 		}
 	}
 	return (va_end(argpass), total);
