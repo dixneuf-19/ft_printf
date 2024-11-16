@@ -12,16 +12,11 @@
 
 #include "ft_printf.h"
 
-static int	print_int(int integer)
-{
-	if (integer < 0)
-		return (write(1, "-", 1) + print_unsigned(-integer));
-	return (print_unsigned(integer));
-}
-
 int	print_signed(int integer)
 {
 	if (integer == -2147483648)
 		return (write(1, "-2147483648", 11));
-	return (print_int(integer));
+	if (integer < 0)
+		return (write(1, "-", 1) + print_unsigned(-integer));
+	return (print_unsigned(integer));
 }
