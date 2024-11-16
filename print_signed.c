@@ -15,7 +15,7 @@
 static int	print_int(int integer)
 {
 	if (integer < 0)
-		return (write(1, "-", 1), 1 + print_unsigned(-integer));
+		return (write(1, "-", 1) + print_unsigned(-integer));
 	return (print_unsigned(integer));
 }
 
