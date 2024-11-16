@@ -6,7 +6,7 @@
 /*   By: mzary <mzary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 00:12:44 by mzary             #+#    #+#             */
-/*   Updated: 2024/11/14 21:29:17 by mzary            ###   ########.fr       */
+/*   Updated: 2024/11/16 09:23:25 by mzary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	print_string(char *string)
 	i = 0;
 	while (string[i])
 	{
-		if (write(1, string + i, 1) == -1)
-			return (-1);
+		write(1, string + i, 1);
 		i++;
 	}
 	return (i);

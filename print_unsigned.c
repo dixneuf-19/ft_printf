@@ -6,30 +6,31 @@
 /*   By: mzary <mzary@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 00:12:59 by mzary             #+#    #+#             */
-/*   Updated: 2024/11/14 21:36:20 by mzary            ###   ########.fr       */
+/*   Updated: 2024/11/16 09:37:22 by mzary            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static void	print_uint(unsigned int uint, int *p_count)
+{
+	char	*digit;
+
+	digit = "0123456789";
+	if (uint < 10)
+		*p_count += write(1, digit + uint, 1);
+	else
+	{
+		print_uint(uint / 10, p_count);
+		*p_count += write(1, digit + (uint % 10), 1);
+	}
+}
+
 int	print_unsigned(unsigned int uinteger)
 {
 	int				count;
-	unsigned int	divide;
-	char			convert;
 
 	count = 0;
-	divide = 1000000000;
-	while (divide / 10 && uinteger / divide == 0)
-		divide = divide / 10;
-	while (divide)
-	{
-		convert = (uinteger / divide) + 48;
-		if (write(1, &convert, 1) == -1)
-			return (-1);
-		count++;
-		uinteger = uinteger % divide;
-		divide = divide / 10;
-	}
+	print_uint(uinteger, &count);
 	return (count);
 }
