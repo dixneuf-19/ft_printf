@@ -18,7 +18,7 @@
 
 int	ft_printf(const char *format, ...);
 
-int	print_arg(char option, va_list argpass, const char **p_format);
+int	print_arg(char opt, va_list ap, const char **p_format);
 int	print_string(char *string);
 int	print_pointer(void *pointer);
 int	print_signed(int integer);
